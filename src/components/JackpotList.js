@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import JackpotRow from './JackpotRow'
 
+
 class JackpotList extends Component {
     render(){
+        
         return(
             <div>
-                <h2>este es el jackpotList</h2>
+                <h2 id="jj">este es el jackpotList</h2>
                 <JackpotRow/>
             </div>
+
         )
         
         //return(

@@ -27,15 +27,20 @@
 
 .navbar {
   background-color: #64a407 !important;
+  padding: 0 !important;
+  
   
   
   
 }
 .nav-item {
   color: white !important;
+  
 }
 .nav-item:hover {
   background-color: #BCD739!important;
+  padding: 0 !important;
+  
 }
 
 #pot {
@@ -48,5 +53,11 @@
 
 .card {
   margin-bottom: 20px !important;
+}
+#btnGroup{
+  margin:30px !important;
+}
+#DateBtn{
+  text-align: right;
 }
 

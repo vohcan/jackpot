@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../resources/ll-logo-green.svg';
 import '../App.css';
+import Header from './Header'
+import JackpotNav from './JackpotNav'
+import SecondaryNav from './SecondaryNav'
+import Results from './Results'
 import JackpotList from './JackpotList'
 class App extends Component {
 
@@ -16,15 +19,66 @@ class App extends Component {
       return response.json()
     })
     .then((jackpots)=>{
-      //console.log(jackpots.last.numbers);
+      console.log(jackpots.last.numbers);
       this.setState({ jackpots: jackpots })
+      console.log(jackpots);
+      console.log(jackpots.last.date);
+      //for date
+      let date =document.getElementById("DateBtn");
+      date.innerHTML= `${jackpots.last.date.dayOfWeek}, ${jackpots.last.date.day}/${jackpots.last.date.month}/${jackpots.last.date.year}`;
+      let subTtl =document.getElementById("subtileRes");
+      subTtl.innerHTML= `EuroJackpot Results for ${jackpots.last.date.dayOfWeek}, ${jackpots.last.date.day}/${jackpots.last.date.month}/${jackpots.last.date.year}`;
     });
   }
   render() {
     return(
       <div>
-        <h2>este es el app</h2>
-        <JackpotList/>
+        <Header/>
+        <JackpotNav/>
+        <SecondaryNav/>
+        <div className="container">
+          <h5><strong>EUROJACKPOT RESULTS & WINNING NUMBERS</strong></h5> 
+          <div id="DateBtn">Fecha</div>
+          <hr/> 
+          <h6 id="subtileRes">EuroJackpot Results for</h6> 
+          <div id="ResultTag">3</div>
+          <hr/>
+          <div className="row">
+            <div className="col-8">
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                     <th scope="col">Tier</th>
+                     <th scope="col">Match</th>
+                     <th scope="col">Winners</th>
+                     <th scope="col">Amount</th>
+                   </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-3">
+              <div className="card">
+                <div className="card-body">
+                  <p><strong>The EuroJackpot numbers for 16.03.2018</strong><br/>
+                  The 313th draw for the EuroJackpot was held on 16.03.2018, as usual at 9pm in Helsinki.</p> 
+                </div>
+              </div>        
+              <div className="card">
+                <div className="card-body">
+                  <p><strong>EuroJackpot numbers for 16.03.2018</strong><br/>
+                    The balls used for the draw are made of a synthetic polymer, softer than ping-pong balls. The results are broadcast after the draw, with the draw-machines independently checked by the VTT Technical Research Center of Finland.</p>
+        
+                  <p>Lottoland published the draw results immediately after the draw on 16.03.2018. You can easily check your tickets here at Lottoland, or purchase your ticket for the next draw.</p> 
+                </div>
+              </div>        
+            </div>
+          </div>
+          
+          
+          <JackpotList/>
+        </div>
       </div>
     )
     
@@ -40,41 +94,8 @@ class App extends Component {
     // return (
       
     //   <div className="App">
-    //     <header className="App-header">
-    //       <img src={logo} className="App-logo" alt="logo" />
-    //       <h1 className="App-title">Welcome to Ciklum</h1>
-    //     </header>
-      
-    //     <nav className="navbar navbar-expand-lg bg-light ">
-    //       <div className="collapse navbar-collapse" id="navbarNav">
-    //         <ul className="navbar-nav justify-content-center">
-    //           <li className="nav-item ">
-    //             <a className="nav-link">PowerBall</a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link">EuroMillons</a>
-    //           </li>
-    //           <li className="nav-item ">
-    //             <a className="nav-link" id="pot">Eurojackpot</a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link">More jackpots</a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link">Syndicates</a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link">Scratchcards</a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link">Instant Win</a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link">Games</a>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     </nav>
+
+
     //     <div className="container">
     //         <div className="row">
     //           <div className="col-sm">
@@ -96,8 +117,7 @@ class App extends Component {
     //       </div>
     //       <div className="row">
     //         <div className="col-8">
-    //           <h4>EUROJACKPOT RESULTS & WINNING NUMBERS</h4> 
-    //           <hr/> 
+    //           
     //           <table className="table table-bordered">
     //             <thead>
     //               <tr>
@@ -130,32 +150,7 @@ class App extends Component {
     //           </table>        
     //         </div>
 
-    //         <div className="col-3">
-    //           <div className="card">
-    //             <div className="card-body">
-    //               <p><strong>The EuroJackpot numbers for 16.03.2018</strong><br/>
-    //               The 313th draw for the EuroJackpot was held on 16.03.2018, as usual at 9pm in Helsinki.</p> 
-    //             </div>
-    //           </div>        
-    //           <div className="card">
-    //             <div className="card-body">
-    //               <p><strong>EuroJackpot numbers for 16.03.2018</strong><br/>
-    //               The balls used for the draw are made of a synthetic polymer, softer than ping-pong balls. The results are broadcast after the draw, with the draw-machines independently checked by the VTT Technical Research Center of Finland.</p>
 
-    //               <p>Lottoland published the draw results immediately after the draw on 16.03.2018. You can easily check your tickets here at Lottoland, or purchase your ticket for the next draw.</p> 
-    //             </div>
-    //           </div>        
-    //         </div>
-            
-            
-    //         </div>
-    //         </div>
-            
-            
-    //   </div>
-     
-    // );
-    //fin return raw
   }
 
 }
