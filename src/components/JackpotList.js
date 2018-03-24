@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
-import JackpotRow from './JackpotRow'
-
 
 class JackpotList extends Component {
     render(){
         
         return(
-            <div>
-                <h2 id="jj">este es el jackpotList</h2>
-                <JackpotRow/>
+            <div className="col-8">
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                     <th scope="col">Tier</th>
+                     <th scope="col">Match</th>
+                     <th scope="col">Winners</th>
+                     <th scope="col">Amount</th>
+                   </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
             </div>
-
         )
-        
-        //return(
-            // <div className= "container-fluid">
-            // <ul className="media-list">
-            //     {
-            //         this.props.map((jackpot)=>{
-            //             return <JackpotRow key={jackpot.last.odds[i]}
-            //                                 winners={jackpot.last.odss.winners}
-            //         })
-            //     }
-            // </ul>
-            
-            // </div>
-           
-        //)
-
     }
 }
 export default JackpotList
