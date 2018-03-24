@@ -11,14 +11,20 @@ class App extends Component {
 
   constructor(props){
     super(props)
-    this.state = {jackpots:{}}
+    this.state = {jackpots:[]}
   }
   componentWillMount(){
     var url = "https://www.lottoland.com/api/drawings/euroJackpot";
 
+    // fetch(url)
+    // .then(data=>data.json())
+    // .then(jackpots => this.setState({jackpots}));
+    
     fetch(url)
     .then(data=>data.json())
     .then(jackpots => this.setState({jackpots}));
+    
+    
     //.then(data=>data.map(numbers=))
  
     // fetch(url).then((data)=>{ data.json()
@@ -38,6 +44,16 @@ class App extends Component {
   render() {
     var last = JSON.stringify(this.state.jackpots.last);
     console.log(last);
+    let views =<div>Loading...</div>;
+    const {jackpots} = this.state;
+    if(jackpots && jackpots.length >0){
+      views = jackpots.map((s,index)=>(
+        <div key={index}>
+        <p>{s.numbers}</p>
+
+        </div>
+      ))
+    }
 
     return(
       <div>
@@ -46,7 +62,7 @@ class App extends Component {
         <SecondaryNav/>
         <div className="container">
         
-         
+         {views}
           <h4>{last}</h4>
           <Results/>
           <div className="row">
