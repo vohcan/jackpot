@@ -60,4 +60,17 @@
 #DateBtn{
   text-align: right;
 }
+#subtileRes{
+  margin-bottom: 20px;
+}
+
+.jkNumbers li{
+  display: inline;
+  text-decoration: none;
+  padding: 10px;
+  margin: 20px;
+  border: 1px black solid;
+  border-radius: 50%;
+  
+}
 

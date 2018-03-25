@@ -12,42 +12,43 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {jackpots:[]}
+    
   }
   componentWillMount(){
     var url = "https://www.lottoland.com/api/drawings/euroJackpot";
-
-    // fetch(url)
-    // .then(data=>data.json())
-    // .then(jackpots => this.setState({jackpots}));
-    
     fetch(url)
     .then(data=>data.json())
-    .then(jackpots => this.setState({jackpots}));
+    .then(function(data){
+      this.setState(data)});
     
-    
-    //.then(data=>data.map(numbers=))
- 
-    // fetch(url).then((data)=>{ data.json()
-    // })
-    // .then((jackpots)=>{
-    //   //console.log(jackpots.last.numbers);
-    //   this.setState({ jackpots: jackpots })
-    //   console.log(jackpots.last.numbers);
-    //   //console.log(jackpots.last.numbers);
-    //   //for date
-    //   // let date =document.getElementById("DateBtn");
-    //   // date.innerHTML= `${jackpots.last.date.dayOfWeek}, ${jackpots.last.date.day}/${jackpots.last.date.month}/${jackpots.last.date.year}`;
-    //   // let subTtl =document.getElementById("subtileRes");
-    //   // subTtl.innerHTML= `EuroJackpot Results for ${jackpots.last.date.dayOfWeek}, ${jackpots.last.date.day}/${jackpots.last.date.month}/${jackpots.last.date.year}`;
-    // });
+
   }
+ 
   render() {
-    var last = JSON.stringify(this.state.jackpots.last);
-    console.log(last);
+
+    let resultNumbers =[4,14,22,33,42]
+    let drawingDate= "23.03.18"
+    let odds = [
+     "apuesta1",
+     "apuesta2",
+     "apuesta3",
+     "apuesta4",
+     "apuesta5",
+     "apuesta6",
+     "apuesta7",
+     "apuesta8",
+     "apuesta9",
+     "apuesta10",
+     "apuesta11",
+     "apuesta12"
+    ]
+  
+    
+
     let views =<div>Loading...</div>;
     const {jackpots} = this.state;
     if(jackpots && jackpots.length >0){
-      views = jackpots.map((s,index)=>(
+      views = this.state.jackpots.map((s,index)=>(
         <div key={index}>
         <p>{s.numbers}</p>
 
@@ -63,10 +64,9 @@ class App extends Component {
         <div className="container">
         
          {views}
-          <h4>{last}</h4>
-          <Results/>
+          <Results rnumbers={resultNumbers} date = {drawingDate}/>
           <div className="row">
-            <JackpotList/>
+            <JackpotList odds ={odds}/>
             <JackpotAside/>
           </div>        
         </div>
