@@ -14,24 +14,16 @@ class App extends Component {
     this.state ={
       jackpots:[]
     }
-
-  
-
   }
   
   componentWillMount(){
   this.loadJackpots();
   
-
- 
   }
   loadJackpots(){
     var url = "https://media.lottoland.com/api/drawings/euroJackpot";
     fetch(url)
-    .then(data=>{data.json();
-
-      console.log(data)
-    })
+    .then(data=>data.json())
     .then(jackpots=>this.setState({jackpots}))
   }
   render() {
@@ -44,16 +36,6 @@ class App extends Component {
      "apuesta3",
      "apuesta4"
     ] 
-    // let views =<div>Loading...</div>;
-    // const {jackpots} = this.state;
-    // if(jackpots && jackpots.length >0){
-    //   views = this.state.jackpots.map((s,index)=>(
-    //     <div key={index}>
-    //     <p>{s.numbers}</p>
-
-    //     </div>
-    //   ))
- 
 
     return(
       <div>
