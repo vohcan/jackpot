@@ -15,11 +15,18 @@ class JackpotList extends Component {
                    </tr>
                 </thead>
                 <tbody>
+                <tr>
+                {odds.map((odd,index) =><th key={index}>{odd}</th>)}
+                </tr>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                </tr>
                 </tbody>
               </table>
-              <ul>
-              {odds.map((odd,index) =><li key={index}>{odd}</li>)}
-              </ul>
+              
             </div>
         )
     }

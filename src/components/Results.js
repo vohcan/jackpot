@@ -11,7 +11,7 @@ class Results extends Component {
 
           <div id="DateBtn">{this.props.date}</div>
           <hr/> 
-          <h6 id="subtileRes">EuroJackpot Results for{this.props.date}</h6> 
+          <h6 id="subtileRes">EuroJackpot Results for {this.props.date}</h6> 
           <div id="ResultTag">
             <ul className ="jkNumbers">
             {numbers.map((number,index) =><li key={index}>{number}</li>)}
