@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class JackpotList extends Component {
     render(){
-      let odds =this.props.odds
         return(
             <div className="col-8">
               <table className="table table-bordered">
@@ -16,17 +15,20 @@ class JackpotList extends Component {
                 </thead>
                 <tbody>
                 <tr>
-                {odds.map((odd,index) =><th key={index}>{odd}</th>)}
+                
                 </tr>
+                
                 <tr>
                   <th>1</th>
                   <th>2</th>
                   <th>3</th>
                   <th>4</th>
                 </tr>
+                <tr>
+                </tr>
                 </tbody>
               </table>
-              
+               
             </div>
         )
     }

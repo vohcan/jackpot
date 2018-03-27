@@ -73,4 +73,9 @@
   border-radius: 50%;
   
 }
+.eur{
+  border: 1px red solid !important;
+  border-radius: 50%;
+  color: red;
+}
 

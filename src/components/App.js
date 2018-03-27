@@ -18,7 +18,8 @@ class App extends Component {
   
   componentWillMount(){
   this.loadJackpots();
-  
+ 
+ 
   }
   loadJackpots(){
     var url = "https://media.lottoland.com/api/drawings/euroJackpot";
@@ -26,16 +27,38 @@ class App extends Component {
     .then(data=>data.json())
     .then(jackpots=>this.setState({jackpots}))
   }
+
+
   render() {
+    let jk = this.state.jackpots
     
-    let resultNumbers =[4,14,22,33,42]
-    let drawingDate= "23.03.18"
-    let odds = [
-     "apuesta1",
-     "apuesta2",
-     "apuesta3",
-     "apuesta4"
-    ] 
+    if(!this.state.jackpots.last){
+      return(<p>Loading...</p>)
+    }
+    else{
+      const {
+        Winners,
+        climbedSince,
+        closingDate,
+        currency,
+        date,
+        drawingDate,
+        euroNumbers,
+        jackpot,
+        lateClosingDate,
+        marketingJackpot,
+        nr,
+        numbers,
+        odds,
+        specialMarketingJackpot
+      } = this.state.jackpots.last;
+      var num =numbers.map((number) =><th key={number}>{number}</th>)
+      var result= numbers.map((number,index) =><li key={index}>{number}</li>)
+      var euro = euroNumbers.map((euroNumber,indexe) =><li className = "eur" key={indexe}>{euroNumber}</li>)
+      var dated = <p>{date.day}/{date.month}/{date.year}</p>
+
+
+    }
 
     return(
       <div>
@@ -43,9 +66,10 @@ class App extends Component {
         <JackpotNav/>
         <SecondaryNav/>
         <div className="container">
-          <Results rnumbers={resultNumbers} date = {drawingDate}/>
+        
+          <Results  result = {result} date = {dated} euroNumbers = {euro}/>
           <div className="row">
-            <JackpotList odds ={odds}/>
+            <JackpotList/>
             <JackpotAside/>
           </div>        
         </div>

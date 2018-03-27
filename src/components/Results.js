@@ -4,18 +4,22 @@ class Results extends Component {
 
     render() {
 
-      let numbers =this.props.rnumbers
+      let result = this.props.result
+      let date = this.props.date
+      let euro= this.props.euroNumbers
       return(
         <div>
           <h5><strong>EUROJACKPOT RESULTS & WINNING NUMBERS</strong></h5> 
 
-          <div id="DateBtn">{this.props.date}</div>
+          <div id="DateBtn">{date}</div>
           <hr/> 
-          <h6 id="subtileRes">EuroJackpot Results for {this.props.date}</h6> 
+          <h6 id="subtileRes">EuroJackpot Results for {date}</h6> 
           <div id="ResultTag">
             <ul className ="jkNumbers">
-            {numbers.map((number,index) =><li key={index}>{number}</li>)}
+            {result}
+            {euro}
             </ul>
+           
           </div>
           <hr/>
         </div>
